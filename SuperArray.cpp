@@ -16,6 +16,8 @@ SuperArray::SuperArray(const int begIndex, const unsigned int capacity)
 	 * member, instead you created a second arr pointer, and this
 	 * second pointer dies and is lost forever when the constructor ends
 	 */
+    lowIndex = begIndex;
+    highIndex = (lowIndex + capacity) - 1;
 	arr = new int[capacity];
     SuperArray::capacity = capacity;
 	// Other info below
@@ -28,7 +30,6 @@ SuperArray::~SuperArray()
 {
 	delete[] arr;
 }
-
 
 /*!
  * Convert int array to string.
@@ -64,8 +65,49 @@ string arrayToString(const SuperArray& obj)
 int &SuperArray::operator[](const int index)
 {
 	int realIndex = index;
-	//
-	// Define your logic here
-	//
-	return arr[realIndex];
+    if(realIndex < lowIndex)
+    {
+        throw "Invalid index request, too low";
+    }
+    if(realIndex > highIndex)
+    {
+        throw "Invalid index request, too high";
+    }
+    if(realIndex >= lowIndex && realIndex <= highIndex)
+    {
+        for(int x = 0; x < capacity; x++)
+        {
+            int temp = lowIndex;
+            temp = temp + x;
+            if (temp == realIndex)
+            {
+                realIndex = (realIndex - temp) + x;
+                break;
+            }
+
+        }
+    }
+    return arr[realIndex];
+}
+
+int SuperArray::getLowIndex() const
+{
+    return(lowIndex);
+}
+
+int SuperArray::getHighIndex() const
+{
+    return(highIndex);
+}
+
+unsigned int SuperArray::length() const
+{
+    int length = capacity;
+
+    return(length);
+}
+
+void SuperArray::resize(const int begIndex, const unsigned int capacity)
+{
+
 }

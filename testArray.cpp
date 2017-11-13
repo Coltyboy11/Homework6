@@ -107,6 +107,7 @@ TEST_CASE("Testing SuperArray class Regular indexes")
 		REQUIRE_THROWS_WITH(sa[9], "Invalid index request, too high");
 	}
 }
+
 TEST_CASE("Testing SuperArray class with super range")
 {
     INFO("Testing SuperArray class with super range");
@@ -155,6 +156,7 @@ TEST_CASE("Testing SuperArray class with super range")
         REQUIRE_THROWS_WITH(sa[19], "Invalid index request, too high");
     }
 }
+
 TEST_CASE("Testing SuperArray class Resize Feature")
  {
     INFO("Testing SuperArray class with super range");
@@ -211,6 +213,7 @@ TEST_CASE("Testing SuperArray class Resize Feature")
 		REQUIRE_THROWS_WITH(sa[19], "Invalid index request, too high");
 	}
 }
+/*
 TEST_CASE("Testing SuperArray class Resize Feature Negative Index")
 {
     INFO("Testing SuperArray class Resize Feature Negative Index");
@@ -351,3 +354,4 @@ TEST_CASE("Testing SuperArray 1 element")
         REQUIRE_THROWS_WITH(sa[4], "Invalid index request, too high");
     }
 }
+*/
