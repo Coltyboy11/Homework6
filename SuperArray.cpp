@@ -109,5 +109,10 @@ unsigned int SuperArray::length() const
 
 void SuperArray::resize(const int begIndex, const unsigned int capacity)
 {
-
+    SuperArray::capacity = capacity;
+    lowIndex = begIndex;
+    int* newArr = new int[lowIndex];
+    memcpy(newArr, arr, capacity);
+    highIndex = (lowIndex + capacity) - 1;
+    arr = newArr;
 }
