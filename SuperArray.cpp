@@ -3,6 +3,7 @@
 // Copyright (c) 2017 WSU
 //
 
+#include <cstring>
 #include "SuperArray.h"
 /*!
  * Constructor
@@ -90,16 +91,28 @@ int &SuperArray::operator[](const int index)
     return arr[realIndex];
 }
 
+/*!
+ * get the low index
+ * @return : the low index
+ */
 int SuperArray::getLowIndex() const
 {
     return(lowIndex);
 }
 
+/*!
+ * get the high index
+ * @return : the high index
+ */
 int SuperArray::getHighIndex() const
 {
     return(highIndex);
 }
 
+/*!
+ * set the length equal to the capacity
+ * @return : the length
+ */
 unsigned int SuperArray::length() const
 {
     int length = capacity;
@@ -107,12 +120,17 @@ unsigned int SuperArray::length() const
     return(length);
 }
 
+/*!
+ * Resizing the array
+ * @param begIndex : the beginning index
+ * @param capacity : the capacity of the array
+ */
 void SuperArray::resize(const int begIndex, const unsigned int capacity)
 {
     SuperArray::capacity = capacity;
     lowIndex = begIndex;
     int* newArr = new int[lowIndex];
     memcpy(newArr, arr, capacity);
-    highIndex = (lowIndex + capacity) - 1;
+    highIndex = (lowIndex + capacity)-4;
     arr = newArr;
 }
