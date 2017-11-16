@@ -127,10 +127,27 @@ unsigned int SuperArray::length() const
  */
 void SuperArray::resize(const int begIndex, const unsigned int capacity)
 {
-    SuperArray::capacity = capacity;
+    int *newArr = new int[capacity];
+    int x = 0;
+    for(int i = 0; i < capacity; i++)
+    {
+        if(i < (lowIndex - begIndex) || i > highIndex)
+        {
+            newArr[i] = 0;
+        }
+        else
+        {
+            newArr[i] = arr[x];
+            x++;
+        }
+    }
     lowIndex = begIndex;
-    int* newArr = new int[lowIndex];
-    memcpy(newArr, arr, capacity);
     highIndex = (lowIndex + capacity)-1;
+    delete[] arr;
     arr = newArr;
+    SuperArray::capacity = capacity;
+    /*for(int i = 0; i < capacity; i++)
+    {
+        cout << arr[i] << endl;
+    }*/
 }
